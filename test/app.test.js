@@ -43,3 +43,10 @@ test('админ-панель без входа недоступна', async () 
   const res = await fetch(base + '/admin', { redirect: 'manual' });
   assert.strictEqual(res.status, 302);
 });
+
+test('после добавления товара показывается сообщение', async () => {
+  const add = await fetch(base + '/cart/add/1', { method: 'POST', redirect: 'manual' });
+  const cookie = add.headers.get('set-cookie').split(';')[0];
+  const res = await fetch(base + '/products', { headers: { cookie } });
+  assert.match(await res.text(), /добавлен в корзину/);
+});

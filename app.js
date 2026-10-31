@@ -68,6 +68,10 @@ app.use((req, res, next) => {
 
   // Задание 4 - сессия доступна во всех шаблонах
   res.locals.session = req.session;
+
+  // флеш-сообщение показывается один раз
+  res.locals.flash = req.session.flash;
+  delete req.session.flash;
   next();
 });
 
@@ -132,6 +136,9 @@ app.post('/cart/add/:id', (req, res) => {
     item.quantity++;
   } else if (product) {
     req.session.cart.push({ id: product.id, title: product.title, price: product.price, quantity: 1 });
+  }
+  if (product) {
+    req.session.flash = `Товар «${product.title}» добавлен в корзину`;
   }
   req.session.save(() => res.redirect('/products'));
 });
