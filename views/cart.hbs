@@ -1,0 +1,28 @@
+{{!-- Задание 3 - корзина --}}
+<h1>Корзина</h1>
+{{#if cart.length}}
+  <table border="1" cellpadding="6">
+    <tr><th>Товар</th><th>Количество</th><th>Цена</th><th>Сумма</th><th></th></tr>
+    {{#each cart}}
+      <tr>
+        <td>{{title}}</td>
+        <td>
+          <form action="/cart/update/{{id}}" method="POST">
+            <input type="number" name="quantity" value="{{quantity}}" min="0" style="width:50px">
+            <button>Обновить</button>
+          </form>
+        </td>
+        <td>{{price}} ₽</td>
+        <td>{{multiply price quantity}} ₽</td>
+        <td>
+          <form action="/cart/remove/{{id}}" method="POST">
+            <button>Удалить</button>
+          </form>
+        </td>
+      </tr>
+    {{/each}}
+  </table>
+  <p><b>Итого: {{total}} ₽</b></p>
+{{else}}
+  <p>Корзина пуста. <a href="/products">Перейти в каталог</a></p>
+{{/if}}

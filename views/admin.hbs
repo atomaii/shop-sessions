@@ -1,0 +1,38 @@
+{{!-- Задание 5 - админ-панель со списком пользователей --}}
+<h1>Пользователи</h1>
+{{#if error}}<p class="error">{{error}}</p>{{/if}}
+
+<table border="1" cellpadding="6">
+  <tr><th>ID</th><th>Логин и роль</th><th></th></tr>
+  {{#each users}}
+    <tr>
+      <td>{{id}}</td>
+      <td>
+        <form action="/admin/users/{{id}}" method="POST">
+          <input name="username" value="{{username}}">
+          <select name="role">
+            <option value="user" {{#if (eq role 'user')}}selected{{/if}}>user</option>
+            <option value="admin" {{#if (eq role 'admin')}}selected{{/if}}>admin</option>
+          </select>
+          <button>Сохранить</button>
+        </form>
+      </td>
+      <td>
+        <form action="/admin/users/{{id}}/delete" method="POST">
+          <button>Удалить</button>
+        </form>
+      </td>
+    </tr>
+  {{/each}}
+</table>
+
+<h3>Добавить пользователя</h3>
+<form action="/admin/users" method="POST">
+  <input name="username" placeholder="Логин">
+  <input name="password" placeholder="Пароль">
+  <select name="role">
+    <option value="user">user</option>
+    <option value="admin">admin</option>
+  </select>
+  <button>Добавить</button>
+</form>

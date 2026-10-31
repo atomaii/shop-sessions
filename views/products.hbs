@@ -1,0 +1,16 @@
+{{!-- Задание 3 - каталог с кнопкой добавления в корзину --}}
+<h1>Каталог</h1>
+<table border="1" cellpadding="6">
+  <tr><th>Товар</th><th>Цена</th><th></th></tr>
+  {{#each products}}
+    <tr>
+      <td>{{title}}</td>
+      <td>{{price}} ₽</td>
+      <td>
+        <form action="/cart/add/{{id}}" method="POST">
+          <button>Добавить в корзину</button>
+        </form>
+      </td>
+    </tr>
+  {{/each}}
+</table>

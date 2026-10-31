@@ -1,0 +1,8 @@
+{{!-- Задание 4 - форма входа --}}
+<h1>Вход</h1>
+<form action="/login" method="POST">
+  <p><input name="username" placeholder="Логин"></p>
+  <p><input name="password" type="password" placeholder="Пароль"></p>
+  <button>Войти</button>
+</form>
+{{#if error}}<p class="error">{{error}}</p>{{/if}}

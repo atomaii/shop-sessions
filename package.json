@@ -1,0 +1,25 @@
+{
+  "name": "shop-sessions",
+  "version": "1.0.0",
+  "description": "Учебный интернет-магазин на Express с сессиями: корзина, авторизация, роли",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "lint": "eslint .",
+    "test": "node --test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.3.0",
+    "express-session": "^1.19.0",
+    "hbs": "^4.4.0",
+    "session-file-store": "^1.5.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.14.0",
+    "globals": "^17.13.0"
+  }
+}

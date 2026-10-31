@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>{{title}}</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header>
+    <a href="/">Главная</a> |
+    <a href="/products">Каталог</a> |
+    <a href="/cart">Корзина ({{cartCount}})</a> |
+    <a href="/profile">Профиль</a> |
+    <a href="/dashboard">Кабинет</a> |
+    <a href="/admin">Админ-панель</a> |
+    <a href="/timer">Таймер</a>
+    &nbsp;&nbsp;
+    {{#if session.isLoggedIn}}
+      <span>Привет, {{session.user.username}}!</span>
+      <a href="/logout">Выйти</a>
+    {{else}}
+      <a href="/login">Войти</a>
+    {{/if}}
+  </header>
+  <hr>
+  {{{body}}}
+</body>
+</html>

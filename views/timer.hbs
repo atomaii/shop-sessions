@@ -1,0 +1,20 @@
+{{!-- Задание 6 - таймер до истечения сессии --}}
+<h1>Время жизни сессии</h1>
+<p>До истечения сессии: <span id="timer"></span></p>
+<a href="/extend-session">Продлить сессию</a>
+
+<script>
+  let remaining = {{maxAge}};
+
+  function show() {
+    const min = Math.floor(remaining / 60000);
+    const sec = Math.floor((remaining % 60000) / 1000);
+    document.getElementById('timer').textContent = min + ':' + String(sec).padStart(2, '0');
+  }
+
+  show();
+  setInterval(() => {
+    remaining -= 1000;
+    show();
+  }, 1000);
+</script>
