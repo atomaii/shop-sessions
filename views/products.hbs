@@ -1,5 +1,6 @@
 {{!-- Задание 3 - каталог с кнопкой добавления в корзину --}}
 <h1>Каталог</h1>
+{{#if flash}}<p class="success">{{flash}}</p>{{/if}}
 <table border="1" cellpadding="6">
   <tr><th>Товар</th><th>Цена</th><th></th></tr>
   {{#each products}}
